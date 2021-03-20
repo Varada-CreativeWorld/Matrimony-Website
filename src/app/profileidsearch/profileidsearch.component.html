@@ -1,0 +1,23 @@
+<script src="https://kit.fontawesome.com/a076d05399.js"></script>
+<div class="container mt-3">
+    
+        <button type="button" class="btn btn-primary mr-3" routerLink="/quick">Quick Search</button>
+        <button type="button" class="btn btn-primary mr-3" routerLink="">Advance Search</button>  
+        <button type="button" class="btn btn-primary" routerLink="/profileidsearch">Profile ID Search</button>       
+        <hr>
+
+        <form [formGroup]="Form" (ngSubmit)="view(Form.value)">
+            <div class="form-row mt-3">
+                <div class="form-group col-md-6">
+                    <label for="profileid">Profile ID Search</label>
+                    <input type="email" class="form-control" id="profileid" formControlName="profileid" required>
+                </div>
+                <div class="form-group col-md-6">
+                    <button type="submit" class="btn btn-outline-primary btn-lg mt-4 ml-3" [disabled]="!Form.valid"><i class="fa fa-search" aria-hidden="true">Search Profile</i></button><br><br>
+                </div>
+            </div>
+        </form>
+    
+
+</div>
+

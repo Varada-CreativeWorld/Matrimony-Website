@@ -1,0 +1,89 @@
+<div class="container-fluid">
+    <div class="card mt-2"> 
+        <div class="bg-primary">
+          <div class="row p-2">
+              <div class="col">
+                  <h3 class="text-white float-left"><span class="align-middle">Online Chat</span></h3>
+              </div>
+              <div class="col">
+                  <button type="button" class="btn btn-outline-light float-right mt-1 ml-1" (click)="navigateBack">BACK</button>
+              </div>
+          </div>
+        </div>     
+        
+          <div class="card-body">
+            <div class="row">
+
+                <div class="col-md-9">
+                    <div *ngFor="let data of Chat">
+                        {{check(data.status)}}
+                        <div class="row" *ngIf="!state">
+
+                            <div class="col-md-1 mt-5 offset-md-1">
+                                <img src={{simage}} class="rounded-circle">
+                                
+                            </div>                        
+
+                            <div class="col-md-4">
+                                <p>{{data.date}} {{data.time}}</p>
+                                <p class="mt-4">{{data.message}}</p>                                   
+                                
+                            </div>
+                        </div>
+                        
+                        <div class="row" *ngIf="state">
+                            <div class="col-md-4 offset-md-5 mr-0">
+                                <p class="text-right">{{data.date}} {{data.time}}</p>
+                                <p class="mt-4 text-right">{{data.message}}</p>                                   
+                                
+                            </div>
+                            <div class="col-md-1 mt-5">
+                                <img src={{image}} class="rounded-circle">
+                                
+                            </div>       
+
+                            
+                        </div>
+                    </div>
+                        <form [formGroup]="Form" (ngSubmit)="send(Form.value)">
+                            <div class="form-row text-center">
+                                <div class="form-group col-md-9 offset-md-1">
+                                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" formControlName="message" required></textarea>
+                                </div>
+                                <div class="form-group col-md-2">
+                                    <button type="submit" class="btn btn-primary btn-lg mt-3" [disabled]="!Form.valid"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+                                </div>
+                                
+                            </div>
+                        </form>
+                        
+
+                      
+                </div>
+
+                <div class="col-md-3">
+                    <div class="vl"></div>
+                    <div class="row" *ngFor="let data of Data">
+                        
+                        <div class="col-md-3">
+                            <img src={{data.image}} class="rounded-circle" (click)="get_chats(data.rprofileid,data.image,data.name)">
+                            <hr>
+                        </div>                        
+
+                        <div class="col-md-9">
+                            <p>{{data.name}}</p>                   
+                            
+                        </div>
+                        
+                    </div>
+                </div>
+
+            </div>
+            
+            
+        </div>
+                  
+        
+    </div><br>
+    
+</div>

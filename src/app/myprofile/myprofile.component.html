@@ -1,0 +1,1048 @@
+
+<div class="container">
+    
+    <hr>
+    <div class="row">
+            <div class="col-md-3">
+            
+                <div class="nav flex-column border border-primary" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                    <a class="nav-link active bg-primary" id="v-pills-home-tab" data-toggle="pill"  role="tab" aria-controls="v-pills-home" aria-selected="true"><h4 class="text-white">My Account</h4></a>
+                    <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill"  href="javascript:void(0);" (click)="myprofile()" role="tab" aria-controls="v-pills-profile" aria-selected="false">Profile Details</a>
+                    <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="javascript:void(0);" (click)="updatephoto()" role="tab" aria-controls="v-pills-messages" aria-selected="false">Update Photo</a> 
+                    <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="javascript:void(0);"  (click)="interestsent()" role="tab" aria-controls="v-pills-messages" aria-selected="false">Express Interest Sent</a>  
+                    <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="javascript:void(0);"  (click)="show_shortlist()" role="tab" aria-controls="v-pills-messages" aria-selected="false">Short List</a>
+                    <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="javascript:void(0);"  (click)="show_matches()" role="tab" aria-controls="v-pills-messages" aria-selected="false">Matches</a>
+                    <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" routerLink="/message" role="tab" aria-controls="v-pills-messages" aria-selected="false">Online Chat</a>
+                    <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" routerLink="/membership"  role="tab" aria-controls="v-pills-messages" aria-selected="false">Upgrade Membership</a>
+                    <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="javascript:void(0);" (click)="mail()" role="tab" aria-controls="v-pills-messages" aria-selected="false">Mail</a>
+                    <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="javascript:void(0);" (click)="successstory()" role="tab" aria-controls="v-pills-messages" aria-selected="false">Success Story</a>
+                    <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="javascript:void(0);" (click)="changepass()" role="tab" aria-controls="v-pills-messages" aria-selected="false">Change Password</a>
+                    <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="javascript:void(0);" (click)="closeacct()" role="tab" aria-controls="v-pills-messages" aria-selected="false">Close Account</a>     
+                </div>
+            
+            </div>
+  
+            <div class="col-md-9">
+                 <div class="card" *ngIf="showpd">
+                    <div class="bg-primary">
+                        <div class="row p-1">
+                            <div class="col">
+                                <h3 class="text-white float-left"><span class="align-middle">My Profile</span></h3>
+                            </div>
+                            <div class="col">
+                                <button type="button" class="btn btn-outline-light float-right mt-1" (click)="uneditForm()" *ngIf="showupdate">CLOSE EDIT</button>
+                                <button type="button" class="btn btn-outline-light float-right mt-1 ml-1" (click)="navigateBack" *ngIf="!showupdate">BACK</button>
+                                <button type="button" class="btn btn-outline-light float-right mt-1" (click)="editForm()" *ngIf="!showupdate">EDIT PROFILE</button><br><br>
+                            </div>
+                        </div>
+                    </div>
+                  <div class="card-body">
+                      
+                  <form [formGroup]="personalForm" (ngSubmit)="personalUpdate(personalForm.value)">
+                     <div class="row">
+                            <div class="col-md-4">
+                                <img src={{image}} class="img-thumbnail">                                
+                            </div>
+  
+                            <div class="col-md-8">
+                                <h4 class="bg-secondary p-2 text-white">{{profileid}}</h4><br><br>
+                                <div class="form-group row">
+                                  <label for="name" class="col-sm-2 col-form-label">Name</label>
+                                  <div class="col-sm-6">
+                                    <input type="text" class="form-control" id="name" formControlName="name" required>
+                                  </div>
+                                </div>
+                                <div class="form-group row">
+                                  <label for="age" class="col-sm-2 col-form-label">Age</label>
+                                  <div class="col-sm-6">
+                                    <input type="text" class="form-control" id="age" formControlName="age" required>
+                                  </div>
+                                </div>
+                                <div class="form-group row">
+                                  <label for="gender" class="col-sm-2 col-form-label">Gender</label>
+                                  <div class="col-sm-6">
+                                    <select id="gender" class="form-control" formControlName="gender" required>
+                                      <option>Female</option>
+                                      <option>Male</option>
+                                      <option>Other</option>
+                                    </select>
+                                  </div>
+                                </div>
+                              
+                          
+                            </div>
+                   
+                      </div><br>
+                  <h4>About</h4>
+                  <hr>
+                    <div class="form-group">
+                        <textarea class="form-control" id="about" rows="3" formControlName="about" required></textarea>
+                    </div>
+                    <br>
+                    <h4>Physical Appearance</h4>
+                    <hr>
+
+                    <div class="form-group row">
+                        <label for="height" class="col-sm-2 col-form-label">Height</label>
+                        <div class="col-sm-4">
+                          <select id="height" class="form-control" formControlName="height" required>
+                            <option>4.5</option>
+                            <option>5</option>
+                            <option>5.5</option>
+                            <option>6</option>
+                            <option>6.5</option>
+                          </select>
+                        </div>
+                        <label for="complexion" class="col-sm-2 col-form-label">Complexion</label>
+                        <div class="col-sm-4">
+                          <select id="height" class="form-control" formControlName="complexion" required>
+                            <option>Fair</option>
+                            <option>Olive</option> 
+                            <option>Brown</option>  
+                          </select>
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label for="weight" class="col-sm-2 col-form-label">Weight</label>
+                        <div class="col-sm-4">
+                          <select id="height" class="form-control" formControlName="weight" required>
+                            <option>50</option>
+                            <option>55</option>
+                            <option>60</option>
+                            <option>65</option>
+                            <option>70</option>
+                            <option>80</option>
+                          </select>
+                        </div>
+                        <label for="scases" class="col-sm-2 col-form-label">Special Cases</label>
+                        <div class="col-sm-4">
+                          <input type="text" class="form-control" id="scases" formControlName="scases" required>
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label for="bodytype" class="col-sm-2 col-form-label">Bodytype</label>
+                        <div class="col-sm-4">
+                          <select id="height" class="form-control" formControlName="bodytype" required>
+                            <option>Slim</option>
+                            <option>Medium</option>
+                            <option>Fat</option>
+                            
+                          </select>
+                        </div>
+                        <label for="bd_grp" class="col-sm-2 col-form-label">Blood Group</label>
+                        <div class="col-sm-4">
+                          <select id="height" class="form-control" formControlName="bd_grp" required>
+                            <option>A+</option>
+                            <option>AB-</option> 
+                            <option>O+</option>  
+                          </select>
+                        </div>
+                    </div>
+
+                    <br>
+                    <h4>Religion Details</h4>
+                    <hr>
+                    <div class="form-group row">
+                        <label for="religion" class="col-sm-2 col-form-label">Religion</label>
+                        <div class="col-sm-4">
+                          <input type="text" class="form-control" id="religion" formControlName="religion" required>
+                        </div>
+                        <label for="caste" class="col-sm-2 col-form-label">Caste</label>
+                        <div class="col-sm-4">
+                          <input type="text" class="form-control" id="caste" formControlName="caste" required>
+                        </div>
+                    </div>
+
+                    <br>
+                    <h4>Lifestyle</h4>
+                    <hr>
+                    <div class="form-group row">
+                        <label for="smoking" class="col-sm-2 col-form-label">Smoking</label>
+                        <div class="col-sm-4">
+                          <select id="height" class="form-control" formControlName="smoking" required>
+                            <option>No</option>
+                            <option>Yes</option>
+                
+                          </select>
+                        </div>
+                        <label for="diet" class="col-sm-2 col-form-label">Diet</label>
+                        <div class="col-sm-4">
+                          <select id="height" class="form-control" formControlName="diet" required>
+                            <option>Vegetarian</option>
+                            <option>Non-Vegetarian</option>  
+                          </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="drinking" class="col-sm-2 col-form-label">Drinking</label>
+                        <div class="col-sm-4">
+                          <select id="height" class="form-control" formControlName="drinking" required>
+                            <option>No</option>
+                            <option>Yes</option>
+                
+                          </select>
+                        </div>
+                        
+                    </div>
+                    <hr>
+                    <button type="submit" class="btn btn-primary" *ngIf="showupdate">Update</button>
+                    <hr>
+                  </form>       
+                                                                   
+                  <br>
+                  <h4>Education & Career</h4>
+                  <hr>
+                  <form [formGroup]="educationForm" (ngSubmit)="educationUpdate(educationForm.value)">
+                    <div class="form-group">
+                      <label for="address" class="col-sm-2 col-form-label">Degrees</label>
+                      <textarea class="form-control" id="address" rows="3" formControlName="edu_type" required></textarea>
+                    </div>
+                    <div class="form-group row">
+                        <label for="education" class="col-sm-2 col-form-label">Education</label>
+                        <div class="col-sm-4">
+                          <select id="mstatus" class="form-control" formControlName="education" required>
+                            <option>10th</option>
+                            <option>12th</option>
+                            <option>Graduate</option>
+                            <option>Post-Graduate</option>
+                          </select>
+                        </div>
+                        <label for="occupation" class="col-sm-2 col-form-label">Occupation</label>
+                        <div class="col-sm-4">
+                          <input type="text" class="form-control" id="occupation" formControlName="occupation" required>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="ai" class="col-sm-2 col-form-label">Annual Income</label>
+                        <div class="col-sm-4">
+                          <input type="text" class="form-control" id="ai" formControlName="ai" required>
+                        </div>
+                        
+                    </div>
+                    <hr>
+                    <button type="submit" class="btn btn-primary" *ngIf="showupdate">Update</button>
+                    <hr>
+                  </form>
+
+                  <br>
+                  <h4>Family Details</h4>
+                  <hr>
+                  <form [formGroup]="familyForm" (ngSubmit)="familyUpdate(familyForm.value)">
+                    <div class="form-group row">
+                        <label for="fname" class="col-sm-2 col-form-label">Father's Name</label>
+                        <div class="col-sm-4">
+                          <input type="text" class="form-control" id="fname" formControlName="fname" required>
+                        </div>
+                        <label for="fprof" class="col-sm-2 col-form-label">Father's Profession</label>
+                        <div class="col-sm-4">
+                          <input type="text" class="form-control" id="fprof" formControlName="fprof" required>
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label for="mname" class="col-sm-2 col-form-label">Mother's Name</label>
+                        <div class="col-sm-4">
+                          <input type="text" class="form-control" id="mname" formControlName="mname" required>
+                        </div>
+                        <label for="mprof" class="col-sm-2 col-form-label">Mother's Profession</label>
+                        <div class="col-sm-4">
+                          <input type="text" class="form-control" id="mprof" formControlName="mprof" required>
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label for="nob" class="col-sm-2 col-form-label">No. of Brothers</label>
+                        <div class="col-sm-4">
+                          <input type="text" class="form-control" id="nob" formControlName="nob" required>
+                        </div>
+                        <label for="nos" class="col-sm-2 col-form-label">No. of Sisters</label>
+                        <div class="col-sm-4">
+                          <input type="text" class="form-control" id="nos" formControlName="nos" required>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="fvalues" class="col-sm-2 col-form-label">Family Values</label>
+                        <div class="col-sm-4">
+                          <input type="text" class="form-control" id="fvalues" formControlName="fvalues" required>
+                        </div>
+                        <label for="status" class="col-sm-2 col-form-label">Status</label>
+                        <div class="col-sm-4">
+                          <input type="text" class="form-control" id="status" formControlName="status" required>
+                        </div>
+                    </div>
+                    <hr>
+                    <button type="submit" class="btn btn-primary" *ngIf="showupdate">Update</button>
+                    <hr>
+                  </form>                  
+
+                  <br>                  
+                  <h4>Contact Details</h4>
+                  <hr>
+                  <form [formGroup]="contactForm" >
+                    <div class="form-group">
+                        <label for="address" class="col-sm-2 col-form-label">Address</label>
+                        <textarea class="form-control" id="address" rows="3" formControlName="address" required></textarea>
+                    </div>
+                    <div class="form-group row">
+                        <label for="country" class="col-sm-2 col-form-label">Country</label>
+                        <div class="col-sm-4">
+                          <select id="mstatus" class="form-control" formControlName="country" (change)="onSelect($event.target.value)" required>
+                            <option value=0>India</option>
+                            <option value=1>Pakistan</option>
+                            <option value=2>USA</option>
+                            <option value=3>China</option>
+                          </select>
+                        </div>
+                        
+                        <label for="state" class="col-sm-2 col-form-label">State</label>
+                        <div class="col-sm-4">
+                          <select id="mstatus" class="form-control" formControlName="state" required>
+                            <option *ngFor="let data of Data">{{data}}</option>            
+                          </select>
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label for="city" class="col-sm-2 col-form-label">City</label>
+                        <div class="col-sm-4">
+                          <input type="text" class="form-control" id="city" formControlName="city" required>
+                        </div>
+                        <label for="mobile" class="col-sm-2 col-form-label">Mobile</label>
+                        <div class="col-sm-4">
+                          <input type="text" class="form-control" id="mobile" formControlName="mobile" required>
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label for="landline" class="col-sm-2 col-form-label">Landline</label>
+                        <div class="col-sm-4">
+                          <input type="text" class="form-control" id="landline" formControlName="landline" required>
+                        </div>
+                        <label for="nos" class="col-sm-2 col-form-label">Email</label>
+                        <div class="col-sm-4">
+                          <input type="text" class="form-control" id="email" formControlName="email" required>
+                        </div>
+                    </div>
+                    <hr>
+                    <button type="submit" class="btn btn-primary" *ngIf="showupdate" (click)="contactUpdate(contactForm.value)">Update</button>
+                    <hr>                    
+                  </form>
+
+                  <br>  
+                  <h4>Partner Preference</h4>
+                  <hr>
+                  <form [formGroup]="preferenceForm" (ngSubmit)="preferenceUpdate(preferenceForm.value)">
+                    <div class="form-group row">
+                        <label for="page" class="col-sm-2 col-form-label">Age From</label>
+                        <div class="col-sm-4">
+                          <input type="text" class="form-control" id="page" formControlName="page" required>
+                        </div>
+                        <label for="pheight" class="col-sm-2 col-form-label">Height</label>
+                        <div class="col-sm-4">
+                          <select id="mstatus" class="form-control" formControlName="pheight" required>
+                            <option>4.5</option>
+                            <option>5</option>
+                            <option>5.5</option>
+                            <option>6</option>
+                            <option>6.5</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label for="pbodytype" class="col-sm-2 col-form-label">Body Type</label>
+                        <div class="col-sm-4">
+                          <select id="mstatus" class="form-control" formControlName="pbodytype" required>
+                            <option>Slim</option>
+                            <option>Medium</option>
+                            <option>Fat</option>              
+                          </select>
+                        </div>
+                        <label for="pcomplexion" class="col-sm-2 col-form-label">Complexion</label>
+                        <div class="col-sm-4">
+                          <select id="mstatus" class="form-control" formControlName="pcomplexion" required>
+                            <option>Fair</option>
+                            <option>Olive</option>
+                            <option>Brown</option>              
+                          </select>
+                        </div>
+                      </div>
+                      <div class="form-group row">
+                        <label for="pmstatus" class="col-sm-2 col-form-label">Marital Status</label>
+                        <div class="col-sm-4">
+                          <select id="mstatus" class="form-control" formControlName="pmstatus" required>
+                            <option>Married</option>
+                            <option>Virgin</option>
+                            <option>Divorced</option>
+                            <option>Widowed</option>                 
+                          </select>
+                        </div>
+                        <label for="pscases" class="col-sm-2 col-form-label">Special Cases</label>
+                        <div class="col-sm-4">
+                          <input type="text" class="form-control" id="pscases" formControlName="pscases" required>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="pfvalues" class="col-sm-2 col-form-label">Family Values</label>
+                        <div class="col-sm-4">
+                          <input type="text" class="form-control" id="pfvalues" formControlName="pfvalues" required>
+                        </div>
+                        <label for="psmoking" class="col-sm-2 col-form-label">Smoking</label>
+                        <div class="col-sm-4">
+                          <select id="mstatus" class="form-control" formControlName="psmoking" required>
+                            <option>No</option>
+                            <option>Yes</option>
+                          </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="pdrinking" class="col-sm-2 col-form-label">Drinking</label>
+                        <div class="col-sm-4">
+                          <select id="mstatus" class="form-control" formControlName="pdrinking" required>
+                            <option>No</option>
+                            <option>Yes</option>
+                          </select>
+                        </div>
+                        <label for="pdiet" class="col-sm-2 col-form-label">Diet</label>
+                        <div class="col-sm-4">
+                          <select id="mstatus" class="form-control" formControlName="pdiet" required>
+                            <option>Vegetarian</option>
+                            <option>Non-Vegetarian</option>
+                          </select>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label for="peducation" class="col-sm-2 col-form-label">Education</label>
+                        <div class="col-sm-4">
+                          <select id="mstatus" class="form-control" formControlName="peducation" required>
+                            <option>10th</option>
+                            <option>12th</option>
+                            <option>Graduate</option>
+                            <option>Post-Graduate</option>
+                          </select>
+                        </div>
+                        <label for="profession" class="col-sm-2 col-form-label">Profession</label>
+                        <div class="col-sm-4">
+                          <input type="text" class="form-control" id="profession" formControlName="profession" required>
+                        </div>
+                    </div>
+                    <hr>
+                    <button type="submit" class="btn btn-primary" *ngIf="showupdate">Update</button>
+                    <hr>
+                  </form>                       
+                  <br>
+              </div><!--Card body close-->
+         </div><!--Card close-->
+                                                                    <!-- END OF PROFILE DETAILS-->
+
+         <div class="card" *ngIf="showca">
+            <div class="bg-primary">
+                <div class="row p-1">
+                    <div class="col">
+                        <h3 class="text-white float-left"><span class="align-middle">Close Account</span></h3>
+                    </div>
+                    <!--
+                    <div class="col">
+                        <button type="submit" class="btn btn-outline-light float-right mt-1">EDIT PROFILE</button><br><br>
+                    </div>
+                    -->
+                </div>
+            </div>
+            <div class="card-body">
+                <form>
+                    <div class="form-group">
+                      <label for="pass">Enter Password</label>
+                      <input type="password" class="form-control" id="pass" aria-describedby="emailHelp">                      
+                    </div>
+                    <button type="submit" class="btn btn-outline-primary btn-lg mt-4">CONTINUE TO CLOSE</button><br><br>
+                </form>
+            </div>
+         </div>
+                                                                        <!-- END OF CLOSE ACCOUNT-->
+         <div class="card" *ngIf="showcp">
+            <div class="bg-primary">
+                <div class="row p-1">
+                    <div class="col">
+                        <h3 class="text-white float-left"><span class="align-middle">Change Password</span></h3>
+                    </div>
+                    <!--
+                    <div class="col">
+                        <button type="submit" class="btn btn-outline-light float-right mt-1">EDIT PROFILE</button><br><br>
+                    </div>
+                    -->
+                </div>
+            </div>
+            <div class="card-body">
+                <form [formGroup]="passwordForm" (ngSubmit)="passUpdate(passwordForm.value)">
+                    <div class="form-group">
+                      <label for="pass">Current Password</label>
+                      <input type="password" class="form-control" id="pass" formControlName="password" required>                      
+                    </div>
+                    <div class="form-group">
+                        <label for="npass">New Password</label>
+                        <input type="password" class="form-control" id="npass" formControlName="npassword" [formControl]="passwordForm.controls['npassword']">                      
+                      </div>
+                      <div class="alert alert-danger" *ngIf="(!passwordForm.controls['npassword'].valid)">
+                        Password should be atleast 8 characters long.
+                      </div>
+                      <div class="form-group">
+                        <label for="cpass">New Password Confirm</label>
+                        <input type="password" class="form-control" id="cpass" formControlName="cpassword" [formControl]="passwordForm.controls['cpassword']">                      
+                      </div>
+                      <div class="alert alert-danger" *ngIf="MustMatch(passwordForm.value)">
+                        Password and Confirm Password should match.
+                      </div>
+                    <button type="submit" class="btn btn-outline-primary btn-lg mt-4">CHANGE PASSWORD</button><br><br>
+                </form>
+                
+            </div>
+         </div>
+                                                                    <!-- END OF CHANGE PASSWORD-->
+         <div class="card" *ngIf="showss">
+            <div class="bg-primary">
+                <div class="row p-1">
+                    <div class="col">
+                        <h3 class="text-white float-left"><span class="align-middle">Success Story</span></h3>
+                    </div>
+                    
+                    <div class="col">
+                        <button type="submit" class="btn btn-outline-light float-right mt-1">POST YOUR SUCCESS STORY</button><br><br>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="card-body">
+                
+                <h4>My Profile</h4>
+                <hr><br>
+          
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <p class="card-text">Profile ID</p>
+                                <p class="card-text">Gender</p>
+                                <p class="card-text">Marital Status</p>
+                                <p class="card-text">Age</p>
+                                <p class="card-text">Last Logged In On</p>
+                                <p class="card-text">Posted For</p>
+                                <p class="card-text">Height Above</p>
+                            </div>
+
+                        </div>
+                    </div>
+
+                  
+                </div>
+                <br><br>
+
+                <h4>Success Story</h4>
+                <hr>
+                    
+            </div>
+          
+         </div>
+
+                                                                          <!-- END OF SUCCESS STORY-->
+         
+         <div class="card" *ngIf="showmi">
+            <div class="bg-primary">
+                <div class="row p-1">
+                    <div class="col">
+                        <h3 class="text-white float-left"><span class="align-middle">Mail</span></h3>
+                    </div>
+
+                </div>
+            </div>
+            <div class="card-body">
+                <nav class="nav flex-column">
+                    
+                    <a class="nav-link" href="javascript:void(0);"  (click)="showinbox()">Inbox</a>
+                    <a class="nav-link" href="javascript:void(0);"  (click)="showsent()">Sent Mail</a>
+                    
+                </nav><br>
+                <table class="table table-striped" *ngIf="inbox">
+                    <thead class="bg-primary text-white">
+                      <tr>
+                        <th scope="col">Receiver</th>
+                        <th scope="col">Subject</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Action</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let mail of Mail">
+                        <td>{{mail.name}}</td>
+                        <td>{{mail.subject}}</td>
+                        <td>{{mail.date}}</td>
+                        <td><button type="button" class="btn btn-info" (click)="display_message(mail.subject,mail.message)"><i class="fa fa-envelope" aria-hidden="true"></i></button><!--<button type="button" class="btn btn-info mr-1"><i class="fa fa-trash" aria-hidden="true"></i></button>--></td>
+                      </tr>
+                      
+                    </tbody>
+                </table>
+
+                <table class="table table-striped" *ngIf="sent">
+                  <thead class="bg-primary text-white">
+                    <tr>
+                      <th scope="col">Sender</th>
+                      <th scope="col">Subject</th>
+                      <th scope="col">Date</th>
+                      <th scope="col">Action</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let mail of Mail">
+                      <td>{{mail.name}}</td>
+                      <td>{{mail.subject}}</td>
+                      <td>{{mail.date}}</td>
+                      <td><button type="button" class="btn btn-info" (click)="display_message(mail.subject,mail.message)"><i class="fa fa-envelope" aria-hidden="true"></i></button><!--<button type="button" class="btn btn-info mr-1"><i class="fa fa-trash" aria-hidden="true"></i></button>--></td>
+                    </tr>
+                    
+                  </tbody>
+              </table>
+              <form  [formGroup]="Form" *ngIf="display">
+                <div class="form-group">
+                  <h4>Subject</h4>
+                  <input type="text" class="form-control" id="exampleFormControlInput1" formControlName="subject" required>
+                </div>
+                
+                <div class="form-group">
+                    <h4>Message Text</h4>
+                  <textarea class="form-control" id="exampleFormControlTextarea1" rows="10" formControlName="message" required></textarea>
+                </div>
+                
+              </form>
+
+                    
+            </div>
+          
+         </div>
+                                                                                    <!-- END OF MAIL-->
+         <div class="card" *ngIf="showoc">
+            <div class="bg-primary">
+                <div class="row p-1">
+                    <div class="col">
+                        <h3 class="text-white float-left"><span class="align-middle">Member Chat</span></h3>
+                    </div>
+                    <!--
+                    <div class="col">
+                        <button type="submit" class="btn btn-outline-light float-right mt-1">EDIT PROFILE</button><br><br>
+                    </div>
+                    -->
+                </div>
+            </div>
+            <div class="card-body">
+                <div class=row>
+                    <div class="col-md-6 text-center">
+                        <img src="assets/mm2.jpg" class="img-thumbnail">
+                        <p>Name</p>
+                        <button type="button" class="btn btn-outline-success">Chat Now</button>
+
+                    </div>
+
+                    <div class="col-md-6 text-center">
+                        <img src="assets/mm2.jpg" class="img-thumbnail">
+                        <p>Name</p>
+                        <button type="button" class="btn btn-outline-warning">Send Msg</button>
+                    </div>
+                </div>
+            </div>
+         </div>
+                                                                      <!-- END OF CHAT-->
+         <div class="card" *ngIf="showup">
+            <div class="bg-primary">
+                <div class="row p-1">
+                    <div class="col">
+                        <h3 class="text-white float-left"><span class="align-middle">My Photos</span></h3>
+                    </div>
+                    <!--
+                    <div class="col">
+                        <button type="submit" class="btn btn-outline-light float-right mt-1">EDIT PROFILE</button><br><br>
+                    </div>
+                    -->
+                </div>
+            </div>
+            <div class="card-body">
+                <form [formGroup]="imageForm" (ngSubmit)="imageUpload(imageForm.value)">
+                    <div class="form-group">
+                      <label for="exampleFormControlFile1">Choose File</label>
+                      <div class="border p-2">
+                        <input type="file" class="form-control-file" id="exampleFormControlFile1" formControlName="image" required>
+                      </div>                      
+                    </div>
+
+                    <div class="form-group">
+                        <label for="choose">Privacy</label>
+                        <div class="border p-2">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio"  id="inlineRadio1" value="Private" formControlName="privacy" required>
+                                <label class="form-check-label" for="inlineRadio1">Private</label>
+                              </div>
+                              <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio"  id="inlineRadio2" value="Public" formControlName="privacy" required>
+                                <label class="form-check-label" for="inlineRadio2">Public</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                              <input class="form-check-input" type="radio"  id="inlineRadio3" value="Profile" formControlName="privacy" required>
+                              <label class="form-check-label" for="inlineRadio2">Update Profile Photo</label>
+                          </div>
+                        </div>                      
+                    </div>
+
+                  </form>
+                  <button type="submit" class="btn btn-outline-primary text-center" (click)="imageUpload(imageForm.value)">Upload</button><br><br>
+                  <div class="row d-flex flex-wrap text-center">
+                    <div class="p-2 border m-2 text-center" *ngFor="let data of ImageData">
+                      <img src={{data.image}} class="img-thumbnail zoomA" >  
+                      <div class="row mt-2">
+                        <div class="col-md-6 text-right">
+                          <button type="button" class="btn btn-info" (click)="updateImage(data)">Update</button>
+                        </div>
+                        <div class="col-md-6 ">
+                          <button type="button" class="btn btn-info" (click)="deleteImage(data)">Remove</button>
+                        </div>
+                      </div>                    
+                    </div>
+                    
+    
+                  </div>
+
+                  
+
+            </div>
+         </div>
+
+                                                                        <!-- END OF UPLOADING PHOTOS-->
+          
+              <div class="card" *ngIf="showeis"> 
+                <div class="bg-primary">
+                  <div class="row p-1">
+                      <div class="col">
+                          <h3 class="text-white float-left"><span class="align-middle">EXPRESS INTEREST</span></h3>
+                      </div>
+                      <div class="col">
+                          <button type="button" class="btn btn-outline-light float-right mt-1 ml-1" (click)="navigateBack">BACK</button>
+                          <button type="button" class="btn btn-outline-light float-right mt-1" *ngIf="showeiss" (click)="getInterestReceived()">INTEREST RECEIVED</button>
+                          <button type="button" class="btn btn-outline-light float-right mt-1" *ngIf="!showeiss" (click)="getInterestSent()">INTEREST SENT</button><br><br>
+                      </div>
+                  </div>
+                </div>     
+                <div *ngIf="showeiss">
+                  <div class="card-body" *ngFor="let data of DataArray">
+                    <div class="row" >
+                        <div class="col-md-3">
+                              <img src={{data.image}} class="img-thumbnail">
+                        </div>
+      
+                        <div class="col-md-9">
+                          <h4 class="bg-secondary p-2 text-white">{{data.sprofileid}}</h4><br>                           
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <p class="card-text">Name</p>
+                                                <p class="card-text">Age</p>
+                                                <p class="card-text">Height </p>
+                                                <p class="card-text">Marital Status</p>
+                                                <p class="card-text">Religion</p>
+                                                <p class="card-text">Caste</p>
+                                                
+                                            </div>
+
+                                            <div class="col-md-6">
+                                              <p class="card-text">{{data.name}}</p>
+                                              <p class="card-text">{{data.age}}</p>
+                                              <p class="card-text">{{data.height}} </p>
+                                              <p class="card-text">{{data.mstatus}}</p>
+                                              <p class="card-text">{{data.religion}}</p>
+                                              <p class="card-text">{{data.caste}}</p>
+                                              
+                                          </div>
+            
+                                        </div>
+                                    </div>
+        
+                                    <div class="col-md-6">
+                                        <div class="row">
+                                            <div class="col-md-5">
+                                                <p class="card-text">Education</p>
+                                                <p class="card-text">Occupation</p>
+                                                <p class="card-text">City</p>
+                                                <p class="card-text">State</p>
+                                                <p class="card-text">Country</p> 
+                                            </div>
+                                            <div class="col-md-6">
+                                              <p class="card-text">{{data.education}}</p>
+                                              <p class="card-text">{{data.occupation}}</p>
+                                              <p class="card-text">{{data.city}}</p>
+                                              <p class="card-text">{{data.state}}</p>
+                                              <p class="card-text">{{data.country}}</p> 
+                                          </div>
+            
+                                        </div>
+                                    </div>
+                              </div>
+        
+                              
+                        </div>
+      
+                    </div>
+                    <hr>
+                    <div class="text-center">
+                        <!--{{check(data.status)}}-->
+                        <button class="btn btn-outline-primary" type="button" (click)="view(data.rprofileid)"><i class="fa fa-user" aria-hidden="true"></i> VIEW PROFILE</button>
+                        <button class="btn btn-outline-primary ml-2" type="button" (click)="cancel(data.rprofileid)">CANCEL</button>
+                        <button class="btn btn-outline-primary ml-2" type="button" (click)="shortlist(data.rprofileid)">SHORTLIST</button>
+                        
+                    </div>
+                </div>
+                </div>          
+                
+            </div><br>
+        
+            
+        <div *ngIf="showeir">
+          <div class="card"> 
+                   
+            <div class="card-body" *ngFor="let data of DataArray1">
+                <div class="row">
+                    <div class="col-md-3">
+                          <img src={{data.image}} class="img-thumbnail">
+                    </div>
+  
+                    <div class="col-md-9">
+                      <h4 class="bg-secondary p-2 text-white">{{data.sprofileid}}</h4><br>                           
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <p class="card-text">Name</p>
+                                            <p class="card-text">Age</p>
+                                            <p class="card-text">Height </p>
+                                            <p class="card-text">Marital Status</p>
+                                            <p class="card-text">Religion</p>
+                                            <p class="card-text">Caste</p>
+                                            
+                                        </div>
+
+                                        <div class="col-md-6">
+                                          <p class="card-text">{{data.name}}</p>
+                                          <p class="card-text">{{data.age}}</p>
+                                          <p class="card-text">{{data.height}} </p>
+                                          <p class="card-text">{{data.mstatus}}</p>
+                                          <p class="card-text">{{data.religion}}</p>
+                                          <p class="card-text">{{data.caste}}</p>
+                                          
+                                      </div>
+        
+                                    </div>
+                                </div>
+    
+                                <div class="col-md-6">
+                                    <div class="row">
+                                        <div class="col-md-5">
+                                            <p class="card-text">Education</p>
+                                            <p class="card-text">Occupation</p>
+                                            <p class="card-text">City</p>
+                                            <p class="card-text">State</p>
+                                            <p class="card-text">Country</p> 
+                                        </div>
+                                        <div class="col-md-6">
+                                          <p class="card-text">{{data.education}}</p>
+                                          <p class="card-text">{{data.occupation}}</p>
+                                          <p class="card-text">{{data.city}}</p>
+                                          <p class="card-text">{{data.state}}</p>
+                                          <p class="card-text">{{data.country}}</p> 
+                                      </div>
+        
+                                    </div>
+                                </div>
+                          </div>
+    
+                          
+                    </div>
+  
+                </div>
+                <hr>
+                <div class="text-center">
+                    <button class="btn btn-outline-primary" type="button" (click)="view(data.sprofileid)"><i class="fa fa-user" aria-hidden="true"></i> VIEW PROFILE</button>
+                    <button class="btn btn-outline-primary ml-2" type="button" (click)="send('Accepted',data.sprofileid)">ACCEPT</button>
+                    <button class="btn btn-outline-primary ml-2" type="button" (click)="send('Rejected',data.sprofileid)">REJECT</button>
+                    <button class="btn btn-outline-primary ml-2" type="button" (click)="shortlist(data.sprofileid)">SHORTLIST</button>
+                </div>
+            </div>
+        </div>
+
+
+        </div>
+      
+                                                                              <!--END OF EXPRESS INTEREST SENT-->
+          <div class="card" *ngIf="showsl"> 
+                <div class="bg-primary">
+                  <div class="row p-1">
+                      <div class="col">
+                          <h3 class="text-white float-left"><span class="align-middle">SHORTLISTED CANDIDATES</span></h3>
+                      </div>
+                      <div class="col">
+                          <button type="button" class="btn btn-outline-light float-right mt-1 ml-1" (click)="navigateBack">BACK</button>
+                      </div>
+                  </div>
+                </div>     
+                
+                  <div class="card-body" *ngFor="let data of DataArray2">
+                    <div class="row" >
+                        <div class="col-md-3">
+                              <img src={{data.image}} class="img-thumbnail">
+                        </div>
+      
+                        <div class="col-md-9">
+                          <h4 class="bg-secondary p-2 text-white">{{data.rprofileid}}</h4><br>                           
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <p class="card-text">Name</p>
+                                                <p class="card-text">Age</p>
+                                                <p class="card-text">Height </p>
+                                                <p class="card-text">Marital Status</p>
+                                                <p class="card-text">Religion</p>
+                                                <p class="card-text">Caste</p>
+                                                
+                                            </div>
+
+                                            <div class="col-md-6">
+                                              <p class="card-text">{{data.name}}</p>
+                                              <p class="card-text">{{data.age}}</p>
+                                              <p class="card-text">{{data.height}} </p>
+                                              <p class="card-text">{{data.mstatus}}</p>
+                                              <p class="card-text">{{data.religion}}</p>
+                                              <p class="card-text">{{data.caste}}</p>
+                                              
+                                          </div>
+            
+                                        </div>
+                                    </div>
+        
+                                    <div class="col-md-6">
+                                        <div class="row">
+                                            <div class="col-md-5">
+                                                <p class="card-text">Education</p>
+                                                <p class="card-text">Occupation</p>
+                                                <p class="card-text">City</p>
+                                                <p class="card-text">State</p>
+                                                <p class="card-text">Country</p> 
+                                            </div>
+                                            <div class="col-md-6">
+                                              <p class="card-text">{{data.education}}</p>
+                                              <p class="card-text">{{data.occupation}}</p>
+                                              <p class="card-text">{{data.city}}</p>
+                                              <p class="card-text">{{data.state}}</p>
+                                              <p class="card-text">{{data.country}}</p> 
+                                          </div>
+            
+                                        </div>
+                                    </div>
+                              </div>
+        
+                              
+                        </div>
+      
+                    </div>
+                    <hr>
+                    <div class="text-center">
+                        <!--{{check(data.status)}}-->
+                        <button class="btn btn-outline-primary" type="button" (click)="view(data.rprofileid)"><i class="fa fa-user" aria-hidden="true"></i> VIEW PROFILE</button>
+                        <button class="btn btn-outline-primary ml-2" type="button" (click)="remove(data.rprofileid)">REMOVE</button>
+                       
+                    </div>
+                </div>
+                          
+                
+            </div>
+
+                                                                                          <!--END OF SHORTLIST-->
+          <div class="card" *ngIf="showm"> 
+            <div class="bg-primary">
+              <div class="row p-1">
+                  <div class="col">
+                      <h3 class="text-white float-left"><span class="align-middle">Matches</span></h3>
+                  </div>
+                  <div class="col">
+                      <button type="button" class="btn btn-outline-light float-right mt-1 ml-1" (click)="navigateBack">BACK</button>
+                  </div>
+              </div>
+            </div>     
+            
+              <div class="card-body" *ngFor="let data of DataArray3">
+                <div class="row" >
+                    <div class="col-md-3">
+                          <img src={{data.image}} class="img-thumbnail">
+                    </div>
+  
+                    <div class="col-md-9">
+                      <h4 class="bg-secondary p-2 text-white">{{data.profileid}}</h4><br>                           
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <p class="card-text">Name</p>
+                                            <p class="card-text">Age</p>
+                                            <p class="card-text">Height </p>
+                                            <p class="card-text">Marital Status</p>
+                                            <p class="card-text">Religion</p>
+                                            <p class="card-text">Caste</p>
+                                            
+                                        </div>
+
+                                        <div class="col-md-6">
+                                          <p class="card-text">{{data.name}}</p>
+                                          <p class="card-text">{{data.age}}</p>
+                                          <p class="card-text">{{data.height}} </p>
+                                          <p class="card-text">{{data.mstatus}}</p>
+                                          <p class="card-text">{{data.religion}}</p>
+                                          <p class="card-text">{{data.caste}}</p>
+                                          
+                                      </div>
+        
+                                    </div>
+                                </div>
+    
+                                <div class="col-md-6">
+                                    <div class="row">
+                                        <div class="col-md-5">
+                                            <p class="card-text">Education</p>
+                                            <p class="card-text">Occupation</p>
+                                            <p class="card-text">City</p>
+                                            <p class="card-text">State</p>
+                                            <p class="card-text">Country</p> 
+                                        </div>
+                                        <div class="col-md-6">
+                                          <p class="card-text">{{data.education}}</p>
+                                          <p class="card-text">{{data.occupation}}</p>
+                                          <p class="card-text">{{data.city}}</p>
+                                          <p class="card-text">{{data.state}}</p>
+                                          <p class="card-text">{{data.country}}</p> 
+                                      </div>
+        
+                                    </div>
+                                </div>
+                          </div>
+    
+                          
+                    </div>
+  
+                </div>
+                <hr>
+                <div class="text-center">
+                    <!--{{check(data.status)}}-->
+                    <button class="btn btn-outline-primary" type="button" (click)="view(data.profileid)"><i class="fa fa-user" aria-hidden="true"></i> VIEW PROFILE</button>
+                    <!--<button class="btn btn-outline-primary ml-2" type="button" (click)="remove(data.rprofileid)">REMOVE</button>-->
+                   
+                </div>
+            </div>
+                      
+            
+        </div><br>
+          
+
+      </div>
+    </div>
+  </div>
+  
+  
+  

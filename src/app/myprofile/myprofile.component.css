@@ -1,0 +1,13 @@
+img{
+    height:300px;
+    width: 400px;
+}
+.zoomA {
+    width: 200px;
+    height: 300px;
+    /* ease | ease-in | ease-out | linear */
+    transition: transform ease-in-out 0.3s;
+  }
+  .zoomA:hover {
+    transform: scale(1.2);
+  }

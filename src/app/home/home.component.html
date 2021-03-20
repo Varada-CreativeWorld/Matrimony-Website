@@ -1,0 +1,248 @@
+<div class="jumbotron jumbotron bg-cover-1 text-white" style="background-image: url('assets/mm.jpg');">
+            
+    <div class="col-sm-4 offset-sm-7 bg-primary">
+        <br><br>
+        <h3>Quick Search</h3>
+        <hr>
+        <form [formGroup]="homeForm" (ngSubmit)="getResult(homeForm.value)">
+            <div class="form-group row">
+                <div class="col-sm-3">Looking for</div>
+                <div class="col-sm-9">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio"   value="Female" formControlName="gender" required>
+                        <label class="form-check-label" for="inlineRadio1">Bride</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio"   value="Male" formControlName="gender" required>
+                        <label class="form-check-label" for="inlineRadio2">Groom</label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="age" class="col-sm-3 col-form-label">Age</label>
+                <div class="col-sm-3">
+                    <select id="age" class="form-control" formControlName="sage" required>
+                        <option selected>25</option>
+                        <option>30</option>
+                        <option>35</option>
+                        <option>40</option>
+                        <option>45</option>
+                    </select>
+                </div>
+                <label  class="col-sm-3 col-form-label">To</label>
+                <div class="col-sm-3">
+                    <select  class="form-control" formControlName="eage" required>
+                        <option selected>25</option>
+                        <option>30</option>
+                        <option>35</option>
+                        <option>40</option>
+                        <option>45</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="religion" class="col-sm-3 col-form-label">Religion</label>
+                <div class="col-sm-9">
+                    <select id="religion" class="form-control"  formControlName="religion" required>
+                        <option selected>Hindu</option>
+                        <option>Christian</option>
+                        <option>Muslim</option>
+                        <option>Sikh</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="mothertongue" class="col-sm-3 col-form-label">Mother Tongue</label>
+                <div class="col-sm-9">
+                    <select id="inputState" class="form-control" formControlName="language" required>
+                        <option selected>Hindi</option>
+                        <option>English</option>
+                        <option>Marathi</option>
+                        <option>Punjabi</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="country" class="col-sm-3 col-form-label">Country Living</label>
+                <div class="col-sm-9">
+                    <select id="inputState" class="form-control" formControlName="country" required>
+                        <option selected>India</option>
+                        <option>UK</option>
+                        <option>US</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="height" class="col-sm-3 col-form-label">Height</label>
+                <div class="col-sm-3">
+                    <select id="inputState" class="form-control" formControlName="sheight" required>
+                                <option>4</option>
+                                <option>4.5</option>
+                                <option>4.6</option>
+                                <option>4.7</option>
+                                <option>4.8</option>
+                                <option>4.9</option>
+                                <option>5</option>
+                                <option>5.1</option>
+                                <option>5.2</option>
+                                <option>5.3</option>
+                                <option>5.4</option>
+                                <option>5.5</option>
+                                <option>5.6</option>
+                                <option>5.7</option>
+                                <option>5.8</option>
+                                <option>5.9</option>
+                                <option>6</option>
+                                <option>6.1</option>
+                                <option>6.2</option>
+                                <option>6.3</option>
+                                <option>6.4</option>
+                                <option>6.5</option>
+                                <option>6.6</option>
+                                <option>6.7</option>
+                                <option>6.8</option>
+                                <option>6.9</option>
+                                <option>7</option>
+                                <option>7.1</option>
+                                <option>7.2</option>
+                                <option>7.3</option>
+                                <option>7.4</option>
+                                <option>7.5</option>
+                    </select>
+                </div>
+                <label for="to" class="col-sm-3 col-form-label">To</label>
+                <div class="col-sm-3">
+                    <select id="inputState" class="form-control" formControlName="eheight" required>
+                                <option>4</option>
+                                <option>4.5</option>
+                                <option>4.6</option>
+                                <option>4.7</option>
+                                <option>4.8</option>
+                                <option>4.9</option>
+                                <option>5</option>
+                                <option>5.1</option>
+                                <option>5.2</option>
+                                <option>5.3</option>
+                                <option>5.4</option>
+                                <option>5.5</option>
+                                <option>5.6</option>
+                                <option>5.7</option>
+                                <option>5.8</option>
+                                <option>5.9</option>
+                                <option>6</option>
+                                <option>6.1</option>
+                                <option>6.2</option>
+                                <option>6.3</option>
+                                <option>6.4</option>
+                                <option>6.5</option>
+                                <option>6.6</option>
+                                <option>6.7</option>
+                                <option>6.8</option>
+                                <option>6.9</option>
+                                <option>7</option>
+                                <option>7.1</option>
+                                <option>7.2</option>
+                                <option>7.3</option>
+                                <option>7.4</option>
+                                <option>7.5</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-sm-3">With Photos</div>
+                <div class="col-sm-5">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="gridCheck1" formControlName="photo" required value="Public">                
+                    </div>
+                </div>
+            </div>
+            
+                <div class="text-center">
+                  
+                    <button class="btn btn-outline-light my-2 my-sm-0" type="submit" [disabled]="!homeForm.valid"><i class="fa fa-search" aria-hidden="true">Search Profile</i></button><br><br>
+                </div>
+            
+
+         </form>
+
+      
+</div>
+</div>
+
+
+<div class="jumbotron jumbotron-fluid bg-transparent">
+<div class="container">
+<h1 class="text-center text-primary hh"><span>Steps to find your match</span></h1><br><br>
+<div class="row">
+    
+    <div class="col-sm-3">
+    <div class="text-center">
+    <i class="fas fa-user text-primary" style="font-size:52px;"></i><br>
+    <p>Create Profile</p>
+    </div>
+    </div>
+
+    <div class="col-sm-3">
+    <div class="text-center">
+    <i class="fas fa-users text-primary" style="font-size:52px;"></i><br>
+    <p>Choose the one</p>
+    </div>
+    </div>
+
+    <div class="col-sm-3">
+    <div class="text-center">
+    <i class="fas fa-user-friends text-primary" style="font-size:52px;"></i><br>        
+    <p>Find Matches</p>
+    </div>
+    </div>
+
+    <div class="col-sm-3">
+    <div class="text-center">
+    <i class="fas fa-address-book text-primary" style="font-size:52px;"></i><br>        
+    <p>Contact</p>
+    </div>
+    </div>
+
+</div>
+</div>
+</div>
+
+       
+<div class="jumbotron jumbotron bg-cover mb-0" style="background-image: url('assets/bg.jpg');">
+<div class="container">
+<h2 class="text-center text-primary">Success Stories</h2><br>
+<div class="row">
+    
+    <div class="col-sm-4">
+    <div class="text-center">
+        <img src="assets/mm2.jpg" class="rounded-circle img-responsive" height=200; width=250;><br>
+        <p class="text-white">Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
+        <button type="button" class="btn btn-primary" >Read More</button>
+    </div>
+    </div>
+
+    <div class="col-sm-4">
+    <div class="text-center">
+        <img src="assets/mm.jpg" class="rounded-circle img-responsive" height=200; width=250;><br>
+        <p class="text-white">Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
+        <button type="button" class="btn btn-primary" >Read More</button>
+    </div>
+    </div>
+
+    <div class="col-sm-4">
+    <div class="text-center">
+        <img src="assets/mm4.jpg" class="rounded-circle img-responsive" height=200; width=250;><br>        
+        <p class="text-white">Lorem ipsum dolor sit amet, consectetur adipisicing elit...</p>
+        <button type="button" class="btn btn-primary" >Read More</button>
+    </div>
+    </div>
+
+</div>
+</div>
+
+</div>

@@ -1,0 +1,361 @@
+<div class="container mt-4">
+  <div class="float-right">
+    <button type="button" class="btn btn-primary" *ngIf="show" (click)="skip()">Skip</button>
+    <button type="button" class="btn btn-primary" *ngIf="!show" (click)="skip()">Back</button>
+  </div>
+
+<form [formGroup]="createForm" (ngSubmit)="save(createForm.value)">   
+  <div *ngIf="show">
+    <h4>Personal Details</h4> 
+    <hr>
+    <div class="form-row">
+      <div class="form-group col-md-4">
+        <label for="name">Name</label>
+        <input type="text" class="form-control" id="name" formControlName="name" required>
+      </div>
+      <div class="form-group col-md-4">
+        <label for="age">Age</label>
+        <input type="text" class="form-control" id="age" formControlName="age" required>
+      </div>
+      <div class="form-group col-md-4">
+        <label for="gender">Gender</label>
+        <select id="gender" class="form-control" formControlName="gender" required>
+          <option>Female</option>
+          <option>Male</option>
+          <option>Other</option>
+        </select>
+      </div>      
+    </div>
+
+    <div class="form-row">
+        <div class="form-group col-md-3">
+          <label for="height">Height</label>
+          <select id="height" class="form-control" formControlName="height" required>
+            <option>4.5</option>
+            <option>5</option>
+            <option>5.5</option>
+            <option>5.6</option>
+            <option>5.7</option>
+            <option>5.8</option>
+            <option>5.9</option>
+            <option>6.1</option>
+            <option>6.2</option>
+            <option>6.3</option>
+            <option>6.4</option>
+            <option>6.5</option>
+            <option>6.6</option>
+            <option>6.7</option>
+            <option>6.8</option>
+            <option>6.9</option>
+            <option>7.0</option>
+          </select>
+        </div>
+        <div class="form-group col-md-3">
+          <label for="weight">Weight</label>
+          <select id="height" class="form-control" formControlName="weight" required>
+            <option>50</option>
+            <option>55</option>
+            <option>60</option>
+            <option>65</option>
+            <option>70</option>
+            <option>80</option>
+            <option>90</option>
+            <option>100</option>
+          </select>
+        </div>
+        <div class="form-group col-md-3">
+            <label for="bodytype">Bodytype</label>
+            <select id="height" class="form-control" formControlName="bodytype" required>
+              <option>Slim</option>
+              <option>Medium</option>
+              <option>Fat</option>
+              
+            </select>
+        </div>
+        <div class="form-group col-md-3">
+          <label for="scases">Special cases</label>
+          <input type="text" class="form-control" id="scases" formControlName="scases" required>
+      </div>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group col-md-4">
+          <label for="smoking">Smoking</label>
+          <select id="height" class="form-control" formControlName="smoking" required>
+            <option>No</option>
+            <option>Yes</option>
+
+          </select>
+        </div>
+        <div class="form-group col-md-4">
+          <label for="drinking">Drinking</label>
+          <select id="height" class="form-control" formControlName="drinking" required>
+            <option>No</option>
+            <option>Yes</option>
+
+          </select>
+        </div>
+        <div class="form-group col-md-4">
+            <label for="diet">Diet</label>
+            <select id="height" class="form-control" formControlName="diet" required>
+              <option>Vegetarian</option>
+              <option>Non-Vegetarian</option>  
+            </select>
+        </div>
+        
+    </div>
+
+    <div class="form-row">
+        <div class="form-group col-md-4">
+          <label for="bd_grp">Blood Group</label>
+          <select id="height" class="form-control" formControlName="bd_grp" required>
+            <option>A+</option>
+            <option>AB-</option> 
+            <option>O+</option>  
+          </select>
+        </div>
+        <div class="form-group col-md-4">
+          <label for="complexion">Complexion</label>
+          <select id="height" class="form-control" formControlName="complexion" required>
+            <option>Fair</option>
+            <option>Olive</option> 
+            <option>Brown</option>  
+          </select>
+        </div>
+        <div class="form-group col-md-4">
+            <label for="mstatus">Marriage Status</label>
+            <select id="mstatus" class="form-control" formControlName="mstatus" required>
+              <option>Divorced</option>
+              <option>unmarried</option>
+              <option>Widowed</option>
+            </select>
+          </div>  
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-4">
+          <label for="caste">Caste</label>
+          <input type="text" class="form-control" id="caste" formControlName="caste" required>
+        </div>
+        <div class="form-group col-md-4">
+          <label for="religion">Religion</label>
+          <input type="text" class="form-control" id="religion" formControlName="religion" required>
+        </div>
+        <div class="form-group col-md-4">
+            <label for="children">Children</label>
+            <input type="text" class="form-control" id="children" formControlName="children" required>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="about">About</label>
+        <textarea class="form-control" id="about" rows="3" formControlName="about" required></textarea>
+    </div>
+    <h4>Contact Details</h4>
+    <hr>
+    <div class="form-group">
+        <label for="address">Address</label>
+        <textarea class="form-control" id="address" rows="2" formControlName="address" required></textarea>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-4">
+          <label for="country">Country</label>
+          <select id="mstatus" class="form-control" formControlName="country" (change)="onSelect($event.target.value)" required>
+            <option >India</option>
+            <option >Pakistan</option>
+            <option >USA</option>
+            <option >China</option>
+          </select>
+        </div>
+        <div class="form-group col-md-4">
+          <label for="state">State</label>
+          <select id="mstatus" class="form-control" formControlName="state" required>
+            <option *ngFor="let data of Data">{{data}}</option>            
+          </select>
+        </div>
+        <div class="form-group col-md-4">
+          <label for="city">City</label>
+          <input type="text" class="form-control" id="city" formControlName="city" required>
+        </div>        
+        
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-4">
+          <label for="email">Email</label>
+          <input type="email" class="form-control" id="email" formControlName="email" required>
+        </div>
+        <div class="form-group col-md-4">
+          <label for="mobile">Mobile</label>
+          <input type="text" class="form-control" id="mobile" formControlName="mobile" required>
+        </div>
+        <div class="form-group col-md-4">
+            <label for="landline">Landline</label>
+            <input type="text" class="form-control" id="landline" formControlName="landline" required>
+        </div>
+    </div>
+    <h4>Education Details</h4>
+    <hr>
+    <div class="form-group">
+        <label for="education">Education</label>
+        <select id="mstatus" class="form-control" formControlName="education" required>
+          <option>10th</option>
+          <option>12th</option>
+          <option>Graduate</option>
+          <option>Post-Graduate</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+      <label for="education">Specify Degrees</label>
+      <textarea class="form-control" rows="3" formControlName="edu_type" required></textarea>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group col-md-4">
+          <label for="occupation">Occupation</label>
+          <input type="text" class="form-control" id="occupation" formControlName="occupation" required>
+        </div>
+        <div class="form-group col-md-4">
+          <label for="ai">Annual Income</label>
+          <input type="text" class="form-control" id="ai" formControlName="ai" required>
+        </div>
+        <div class="form-group col-md-4 text-right">
+          <button type="button" class="btn btn-primary mt-4" *ngIf="show" (click)="skip()">Next</button>
+        </div>
+    </div>
+    
+  </div>
+  <div *ngIf="!show">
+    <h4>Family Details</h4>
+    <hr>
+    <div class="form-row">
+        <div class="form-group col-md-3">
+          <label for="fname">Father's Name</label>
+          <input type="text" class="form-control" id="fname" formControlName="fname" required>
+        </div>
+        <div class="form-group col-md-3">
+            <label for="mname">Mother's Name</label>
+            <input type="text" class="form-control" id="mname" formControlName="mname" required>
+        </div>
+        <div class="form-group col-md-3">
+            <label for="fprof">Father's Profession</label>
+            <input type="text" class="form-control" id="fprof" formControlName="fprof" required>
+        </div>   
+        <div class="form-group col-md-3">
+            <label for="mprof">Mother's Profession</label>
+            <input type="text" class="form-control" id="mprof" formControlName="mprof" required>
+        </div>        
+        
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-3">
+          <label for="nob">No. of Brothers</label>
+          <input type="text" class="form-control" id="nob" formControlName="nob" required>
+        </div>
+        <div class="form-group col-md-3">
+            <label for="nos">No. of Sisters</label>
+            <input type="text" class="form-control" id="nos" formControlName="nos" required>
+        </div>
+        <div class="form-group col-md-3">
+            <label for="fvalues">Family Values</label>
+            <input type="text" class="form-control" id="fvalues" formControlName="fvalues" required>
+        </div>   
+        <div class="form-group col-md-3">
+            <label for="status">Status</label>
+            <input type="text" class="form-control" id="status" formControlName="status" required>
+        </div>        
+        
+    </div>
+    <h4>Preference Details</h4>
+    <hr>
+    <div class="form-row">
+        <div class="form-group col-md-3">
+          <label for="page">Age</label>
+          <input type="text" class="form-control" id="page" formControlName="page" required>
+        </div>
+        <div class="form-group col-md-3">
+            <label for="pheight">Height</label>
+            <select id="mstatus" class="form-control" formControlName="pheight" required>
+              <option>4.5</option>
+              <option>5</option>
+              <option>5.5</option>
+              <option>6</option>
+              <option>6.5</option>
+            </select>
+        </div>
+        <div class="form-group col-md-3">
+            <label for="pbodytype">Bodytype</label>
+            <select id="mstatus" class="form-control" formControlName="pbodytype" required>
+              <option>Slim</option>
+              <option>Medium</option>
+              <option>Fat</option>              
+            </select>
+        </div>   
+        <div class="form-group col-md-3">
+            <label for="pcomplexion">Complexion</label>
+            <select id="mstatus" class="form-control" formControlName="pcomplexion" required>
+              <option>Fair</option>
+              <option>Olive</option>
+              <option>Brown</option>              
+            </select>
+        </div>        
+        
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-3">
+          <label for="psmoking">Smoking</label>
+          <select id="mstatus" class="form-control" formControlName="psmoking" required>
+            <option>No</option>
+            <option>Yes</option>
+          </select>
+        </div>
+        <div class="form-group col-md-3">
+          <label for="pdrinking">Drinking</label>
+          <select id="mstatus" class="form-control" formControlName="pdrinking" required>
+            <option>No</option>
+            <option>Yes</option>
+          </select>
+        </div>
+        <div class="form-group col-md-3">
+            <label for="pdiet">Diet</label>
+            <select id="mstatus" class="form-control" formControlName="pdiet" required>
+              <option>Vegetarian</option>
+              <option>Non-Vegetarian</option>
+            </select>
+        </div>
+        <div class="form-group col-md-3">
+            <label for="pscases">Special cases</label>
+            <input type="text" class="form-control" id="pscases" formControlName="pscases" required>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-3">
+          <label for="pmstatus">Marriage Status</label>
+          <select id="mstatus" class="form-control" formControlName="pmstatus" required>
+            <option>unmarried</option>
+            <option>Divorced</option>
+            <option>Widowed</option>
+          </select>
+        </div>
+        <div class="form-group col-md-3">
+          <label for="pfvalues">Family Values</label>
+          <input type="text" class="form-control" id="pfvalues" formControlName="pfvalues" required>
+        </div>
+        <div class="form-group col-md-3">
+            <label for="peducation">Education</label>
+            <select id="mstatus" class="form-control" formControlName="peducation" required>
+              <option>10th</option>
+              <option>12th</option>
+              <option>Graduate</option>
+              <option>Post-Graduate</option>
+            </select>
+        </div>
+        <div class="form-group col-md-3">
+            <label for="profession">Profession</label>
+            <input type="text" class="form-control" id="profession" formControlName="profession" required>
+        </div>
+    </div>
+    <div class="text-center">
+        <button type="submit" class="btn btn-primary btn-lg mb-3">Submit</button>       
+    </div>
+  </div>
+  </form>
+</div>

@@ -1,0 +1,387 @@
+
+<div class="container">
+    <!--<h6 class="mb-0 mt-2">SEARCH RESULTS</h6>-->
+    <div class="row mt-2" *ngIf="!show">
+        <div class="col-md-8">
+            <h5 class="bg-primary text-white p-2">Search Results</h5>
+            
+            <!--<div class="card"  *ngFor="let data of DataArray">                
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-3">
+                              <img src={{data.image}}>
+                        </div>
+      
+                        <div class="col-md-9">
+                          <h4 class="bg-secondary p-2 text-white">{{data.profileid}}</h4><br>                           
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <p class="card-text">Name</p>
+                                                <p class="card-text">Age</p>
+                                                <p class="card-text">Height </p>
+                                                <p class="card-text">Marital Status</p>
+                                                <p class="card-text">Religion</p>
+                                                <p class="card-text">Caste</p>
+                                                
+                                            </div>
+
+                                            <div class="col-md-6">
+                                              <p class="card-text">{{data.name}}</p>
+                                              <p class="card-text">{{data.age}}</p>
+                                              <p class="card-text">{{data.height}} </p>
+                                              <p class="card-text">{{data.mstatus}}</p>
+                                              <p class="card-text">{{data.religion}}</p>
+                                              <p class="card-text">{{data.caste}}</p>
+                                              
+                                          </div>
+            
+                                        </div>
+                                    </div>
+        
+                                    <div class="col-md-6">
+                                        <div class="row">
+                                            <div class="col-md-5">
+                                                <p class="card-text">Education</p>
+                                                <p class="card-text">Occupation</p>
+                                                <p class="card-text">City</p>
+                                                <p class="card-text">State</p>
+                                                <p class="card-text">Country</p> 
+                                            </div>
+                                            <div class="col-md-6">
+                                              <p class="card-text">{{data.education}}</p>
+                                              <p class="card-text">{{data.occupation}}</p>
+                                              <p class="card-text">{{data.city}}</p>
+                                              <p class="card-text">{{data.state}}</p>
+                                              <p class="card-text">{{data.country}}</p> 
+                                          </div>
+            
+                                        </div>
+                                    </div>
+                              </div>
+        
+                              
+                        </div>
+      
+                    </div>
+                    <hr>
+                    <div class="text-center">
+                        {{check(data.status)}}
+                        <button class="btn btn-outline-primary" type="button" (click)="view(data.profileid)"><i class="fa fa-user" aria-hidden="true"></i> VIEW PROFILE</button>
+                        <button class="btn btn-outline-primary ml-2" type="button" (click)="sendRequest(data.profileid)" *ngIf = "check_val_req"><i class="fa fa-heart" aria-hidden="true" ></i> SEND REQUEST</button>
+                        <button class="btn btn-outline-primary ml-2" type="button" [disabled]="true" *ngIf = "check_val_wait"><i class="fa fa-heart" aria-hidden="true" ></i> AWAITING RESPONSE</button>
+                        <button class="btn btn-outline-primary ml-2" type="button" [disabled]="true" *ngIf = "following"><i class="fa fa-heart" aria-hidden="true" ></i> FOLLOWING</button>
+                        <button class="btn btn-outline-primary ml-2" type="button" (click)="shortlist(data.profileid)">SHORTLIST</button>
+                        <button class="btn btn-outline-primary ml-2" type="button" (click)="initializeReceiver(data.profileid)"><i class="fa fa-envelope" aria-hidden="true"></i> SEND MAIL</button>
+                
+                    </div>
+                </div>
+            </div><br>-->
+            <mat-card class="example-card" *ngFor="let data of DataArray">
+              <mat-card-content>
+                <div class="row">
+                  <div class="col-md-3">
+                        <img src={{data.image}}>
+                  </div>
+
+                  <div class="col-md-9">
+                    <h4 class="bg-secondary p-2 text-white">{{data.name}}</h4><br>                           
+                          <div class="row">
+                              <div class="col-md-6">
+                                  <div class="row">
+                                      <div class="col-md-6">
+                                          <p class="card-text">Profileid</p>
+                                          <p class="card-text">Age</p>
+                                          <p class="card-text">Height </p>
+                                          <p class="card-text">Marital Status</p>
+                                          <p class="card-text">Religion</p>
+                                          <p class="card-text">Caste</p>
+                                          
+                                      </div>
+
+                                      <div class="col-md-6">
+                                        <p class="card-text">{{data.profileid}}</p>
+                                        <p class="card-text">{{data.age}}</p>
+                                        <p class="card-text">{{data.height}} </p>
+                                        <p class="card-text">{{data.mstatus}}</p>
+                                        <p class="card-text">{{data.religion}}</p>
+                                        <p class="card-text">{{data.caste}}</p>
+                                        
+                                    </div>
+      
+                                  </div>
+                              </div>
+  
+                              <div class="col-md-6">
+                                  <div class="row">
+                                      <div class="col-md-5">
+                                          <p class="card-text">Education</p>
+                                          <p class="card-text">Occupation</p>
+                                          <p class="card-text">City</p>
+                                          <p class="card-text">State</p>
+                                          <p class="card-text">Country</p> 
+                                      </div>
+                                      <div class="col-md-6">
+                                        <p class="card-text">{{data.education}}</p>
+                                        <p class="card-text">{{data.occupation}}</p>
+                                        <p class="card-text">{{data.city}}</p>
+                                        <p class="card-text">{{data.state}}</p>
+                                        <p class="card-text">{{data.country}}</p> 
+                                    </div>
+      
+                                  </div>
+                              </div>
+                        </div>
+  
+                        
+                  </div>
+
+              </div>
+              <hr>
+              <div class="text-center">
+                  {{check(data.status)}}
+                  <button class="btn btn-outline-primary" type="button" (click)="view(data.profileid)"><i class="fa fa-user" aria-hidden="true"></i> VIEW PROFILE</button>
+                  <button class="btn btn-outline-primary ml-2" type="button" (click)="sendRequest(data.profileid)" *ngIf = "check_val_req"><i class="fa fa-heart" aria-hidden="true" ></i> SEND REQUEST</button>
+                  <button class="btn btn-outline-primary ml-2" type="button" [disabled]="true" *ngIf = "check_val_wait"><i class="fa fa-heart" aria-hidden="true" ></i> AWAITING RESPONSE</button>
+                  <button class="btn btn-outline-primary ml-2" type="button" [disabled]="true" *ngIf = "following"><i class="fa fa-heart" aria-hidden="true" ></i> FOLLOWING</button>
+                  <button class="btn btn-outline-primary ml-2" type="button" (click)="shortlist(data.profileid)">SHORTLIST</button>
+                  <button class="btn btn-outline-primary ml-2" type="button" (click)="initializeReceiver(data.profileid)"><i class="fa fa-envelope" aria-hidden="true"></i> SEND MAIL</button>
+          
+              </div><br>
+              </mat-card-content>
+              </mat-card>
+            
+        </div>
+        
+
+        <div class="col-md-3">
+
+           
+              <div id="accordion">
+
+                <div class="card">
+                  
+                  <h5 class="bg-primary text-white p-2">Refine Search</h5>
+                  <div class="card-header">
+                    <a class="card-link" data-toggle="collapse" href="#age">
+                      Age Range<i class="fa float-right" aria-hidden="true"></i>
+                    </a>
+                  </div>
+                  <div id="age" class="collapse show" data-parent="#accordion">
+                    <div class="card-body">
+                        <form>
+                            <div class="form-group">
+                                <label for="from">From</label>
+                                <select class="form-control" id="afrom" >
+                                <option>19</option>
+                                <option>27</option>
+                                <option>29</option>
+                                <option>24</option>
+                                <option>30</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="to">To</label>
+                                <select class="form-control" id="ato">
+                                  <option>19</option>
+                                  <option>27</option>
+                                  <option>29</option>
+                                  <option>24</option>
+                                  <option>30</option>
+                                </select>
+                            </div>
+                        </form>
+                    </div>
+                  </div>
+                </div>
+              
+                <div class="card">
+                  <div class="card-header">
+                    <a class="collapsed card-link" data-toggle="collapse" href="#height">
+                      Height<i class="fa float-right" aria-hidden="true"></i>
+                    </a>
+                  </div>
+                  <div id="height" class="collapse" data-parent="#accordion">
+                    <div class="card-body">
+                        <form>
+                            <div class="form-group">
+                                <label for="from">From</label>
+                                <select class="form-control" id="hfrom">
+                                <option>4</option>
+                                <option>4.5</option>
+                                <option>4.6</option>
+                                <option>4.7</option>
+                                <option>4.8</option>
+                                <option>4.9</option>
+                                <option>5</option>
+                                <option>5.1</option>
+                                <option>5.2</option>
+                                <option>5.3</option>
+                                <option>5.4</option>
+                                <option>5.5</option>
+                                <option>5.6</option>
+                                <option>5.7</option>
+                                <option>5.8</option>
+                                <option>5.9</option>
+                                <option>6</option>
+                                <option>6.1</option>
+                                <option>6.2</option>
+                                <option>6.3</option>
+                                <option>6.4</option>
+                                <option>6.5</option>
+                                <option>6.6</option>
+                                <option>6.7</option>
+                                <option>6.8</option>
+                                <option>6.9</option>
+                                <option>7</option>
+                                <option>7.1</option>
+                                <option>7.2</option>
+                                <option>7.3</option>
+                                <option>7.4</option>
+                                <option>7.5</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="to">To</label>
+                                <select class="form-control" id="hto">
+                                <option>4</option>
+                                <option>4.5</option>
+                                <option>4.6</option>
+                                <option>4.7</option>
+                                <option>4.8</option>
+                                <option>4.9</option>
+                                <option>5</option>
+                                <option>5.1</option>
+                                <option>5.2</option>
+                                <option>5.3</option>
+                                <option>5.4</option>
+                                <option>5.5</option>
+                                <option>5.6</option>
+                                <option>5.7</option>
+                                <option>5.8</option>
+                                <option>5.9</option>
+                                <option>6</option>
+                                <option>6.1</option>
+                                <option>6.2</option>
+                                <option>6.3</option>
+                                <option>6.4</option>
+                                <option>6.5</option>
+                                <option>6.6</option>
+                                <option>6.7</option>
+                                <option>6.8</option>
+                                <option>6.9</option>
+                                <option>7</option>
+                                <option>7.1</option>
+                                <option>7.2</option>
+                                <option>7.3</option>
+                                <option>7.4</option>
+                                <option>7.5</option>
+                                </select>
+                            </div>
+                        </form>
+                    </div>
+                  </div>
+                </div>
+              
+                <div class="card">
+                  <div class="card-header">
+                    <a class="collapsed card-link" data-toggle="collapse" href="#country">
+                      Country<i class="fa float-right" aria-hidden="true"></i>
+                    </a>
+                  </div>
+                  <div id="height" class="collapse" data-parent="#accordion">
+                    <div class="card-body">
+                        <form>
+                            <div class="form-group">
+                                <label for="from">Choose Country</label>
+                                <select class="form-control" id="country" (change)="onSelect($event.target.value)">
+                                <option>India</option>
+                                <option>Pakistan</option>
+                                <option>China</option>
+                                <option>Singapore</option>
+                                <option>UAE</option>
+                                </select>
+                            </div>
+                            
+                        </form>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="card">
+                  <div class="card-header">
+                    <a class="collapsed card-link" data-toggle="collapse" href="#state">
+                      State<i class="fa float-right" aria-hidden="true"></i>
+                    </a>
+                  </div>
+                  <div id="height" class="collapse" data-parent="#accordion">
+                    <div class="card-body">
+                        <form>
+                            <div class="form-group">
+                                <label for="from">Choose State</label>
+                                <select class="form-control" id="state">
+                                  <option *ngFor="let data of Data">{{data}}</option>  
+                                <!--<option>Kerala</option>
+                                <option>Punjab</option>
+                                <option>Gujarat</option>
+                                <option>Maharashtra</option>
+                                <option>Andhra Pradesh</option>-->
+                                </select>
+                            </div>
+                            
+                        </form>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header">
+                      <a class="card-link" data-toggle="collapse" href="#ms">
+                        Marital Status<i class="fa float-right" aria-hidden="true"></i>
+                      </a>
+                    </div>
+                    <div id="ms" class="collapse show" data-parent="#accordion">
+                      <div class="card-body">
+                          <form>
+                              <div class="form-group">
+                                  
+                                  <select class="form-control" id="mstatus">
+                                  <option>unmarried</option>
+                                  <option>Widowed</option>
+                                  <option>Divorced</option>
+                                  </select>
+                              </div>
+                              
+                          </form>
+                      </div>
+                    </div>
+                  </div>
+                
+              
+              </div>
+              <div class="text-center">
+                <button class="btn btn-outline-primary mt-3" type="button" (click)="filter()">FILTER</button>
+              </div>
+              
+        </div>
+            
+    </div>
+
+<!--<form *ngIf="show" [formGroup]="Form" (ngSubmit)="sendMessage(Form.value)">
+      <div class="form-group">
+        <label for="exampleFormControlInput1">Subject</label>
+        <input type="text" class="form-control" id="exampleFormControlInput1" formControlName="subject" required>
+      </div>
+      
+      <div class="form-group">
+        <label for="exampleFormControlTextarea1">Message Text</label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" formControlName="message" required></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary" [disabled]="!Form.valid">Send</button>
+    </form>
+</div>-->
+
+<mat-paginator [length] = "100"
+   [pageSize] = "10"
+   [pageSizeOptions] = "[5, 10, 25, 100]"></mat-paginator>

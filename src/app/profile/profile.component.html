@@ -1,0 +1,286 @@
+
+<div class="container">
+  <h2>{{Data.personal[0].name}}'s Profile</h2>
+  <hr>
+  <div class="row">
+    <div class="col-md-3">
+  
+        <div class="nav flex-column  border border-primary" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+            <a class="nav-link active bg-primary" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-home" role="tab" aria-controls="v-pills-home" aria-selected="true"><h4 class="text-white">Actions</h4></a>
+            <a class="nav-link" id="v-pills-profile-tab" data-toggle="pill" href="javascript:void(0);" (click)="flip()" role="tab" aria-controls="v-pills-profile" aria-selected="false">View Contact Details</a>
+            <a class="nav-link" id="v-pills-messages-tab" data-toggle="pill" href="javascript:void(0);" (click)="print()" role="tab" aria-controls="v-pills-messages" aria-selected="false">Print Profile</a>        
+        </div>
+  
+    </div>
+
+    <div class="col-md-9" *ngIf="show">
+       <div class="card">
+          <div class="bg-primary">
+           <div class="row p-1">
+            <div class="col">
+                <h3 class="text-white float-left"><span class="align-middle">Profile</span></h3>
+            </div>
+            <div class="col">
+                <button type="button" class="btn btn-outline-light float-right mt-1" (click)="navigateBack()">Back</button><br><br>
+            </div>
+           </div>
+          </div>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-md-3">
+                        <img src={{Data.image[0].image}}>
+                    </div>
+
+
+                    <div class="col-md-8 offset-md-1">
+                        <h4 class="bg-secondary p-2 text-white">{{Data.personal[0].name}}</h4>
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <p class="card-text">Profileid</p>
+                                <p class="card-text">Email ID</p>
+                                <p class="card-text">Mobile </p>
+                                <p class="card-text">Landline</p>
+                                <p class="card-text">Address</p>
+                                <p class="card-text">City</p>
+                                <p class="card-text">State</p>
+                                <p class="card-text">Country</p>
+                            </div>
+
+                            <div class="col-sm-8">
+                                <p class="card-text">{{profileid}}</p>
+                                <p class="card-text">****<i class="fa fa-eye ml-4" aria-hidden="true"></i></p>
+                                <p class="card-text">****<i class="fa fa-eye ml-4" aria-hidden="true"></i></p>
+                                <p class="card-text">****<i class="fa fa-eye ml-4" aria-hidden="true"></i></p>
+                                <p class="card-text">****<i class="fa fa-eye ml-4" aria-hidden="true"></i></p>
+                                <!--<p class="card-text">{{Data.contact[0].email}}</p>-->
+                                <!--<p class="card-text">{{Data.contact[0].mobile}}</p>-->
+                                <!--<p class="card-text">{{Data.contact[0].landline}}</p>-->
+                                <!--<p class="card-text">{{Data.contact[0].address}}</p>-->
+                                <p class="card-text">{{Data.contact[0].city}}</p>
+                                <p class="card-text">{{Data.contact[0].state}}</p>
+                                <p class="card-text">{{Data.contact[0].country}}</p>
+                            </div>
+                        </div>
+                        
+                        
+                    </div>
+
+                </div><br>
+                <hr>
+                    <div class="text-center">
+                        {{check(Data.status[0].status)}}
+                        <button class="btn btn-outline-primary ml-2" type="button" (click)="sendRequest(profileid)" *ngIf = "check_val_req"><i class="fa fa-heart" aria-hidden="true" ></i> SEND REQUEST</button>
+                        <button class="btn btn-outline-primary ml-2" type="button" [disabled]="true" *ngIf = "check_val_wait"><i class="fa fa-heart" aria-hidden="true" ></i> AWAITING RESPONSE</button>
+                        <button class="btn btn-outline-primary ml-2" type="button" [disabled]="true" *ngIf = "following"><i class="fa fa-heart" aria-hidden="true" ></i> FOLLOWING</button>
+                        <button class="btn btn-outline-primary ml-2" type="button" (click)="shortlist(profileid)">SHORTLIST</button>
+                        <button class="btn btn-outline-primary ml-2" type="button" (click)="initializeReceiver(profileid)"><i class="fa fa-envelope" aria-hidden="true"></i> SEND MAIL</button>
+                
+                    </div>
+                <br>
+                <hr>
+                <h4>About</h4>
+                <hr>
+                <p>{{Data.personal[0].about}}</p>
+                <br>
+                <h4>Physical Appearance</h4>
+                <hr>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <p class="card-text">Height</p>
+                                    <p class="card-text">Father's Profession </p>
+                                    <p class="card-text">Mother's Profession</p>
+                                    <p class="card-text">No. of Brothers</p>
+                                     
+                                </div>
+                                <div class="col-md-6">
+                                    <p class="card-text">{{Data.personal[0].height}}</p>
+                                    <p class="card-text">{{Data.family[0].fprof}}</p>
+                                    <p class="card-text">{{Data.family[0].mprof}}</p>
+                                    <p class="card-text">{{Data.family[0].nob}}</p>
+                                     
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <p class="card-text">Complexion</p>
+                                    <p class="card-text">No. of Sisters</p>
+                                    <p class="card-text">Family Values</p>
+                                    <p class="card-text">Family Status</p>
+                                     
+                                </div>
+                                <div class="col-md-8">
+                                    <p class="card-text">{{Data.personal[0].complexion}}</p>
+                                    <p class="card-text">{{Data.family[0].nos}}</p>
+                                    <p class="card-text">{{Data.family[0].fvalues}}</p>
+                                    <p class="card-text">{{Data.family[0].status}}</p>
+                                     
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                <br>
+                
+                <h4>Contact Details</h4>
+                <hr>
+                <div class="row">
+                        <div class="col-md-6">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <p class="card-text">Father's Name</p>
+                                    <p class="card-text">Mother's Name</p>
+                                    <p class="card-text">Address</p>
+                                    <p class="card-text">City</p>
+                                    <p class="card-text">State</p>
+                                    <p class="card-text">Country</p>
+                                     
+                                </div>
+                                <div class="col-md-6">
+                                    <p class="card-text">{{Data.family[0].fname}}</p>
+                                    <p class="card-text">{{Data.family[0].mname}}</p>
+                                    <p class="card-text">****<i class="fa fa-eye ml-4" aria-hidden="true"></i></p>
+                                    <!--<p class="card-text">{{Data.contact[0].address}}</p>-->
+                                    <p class="card-text">{{Data.contact[0].city}}</p>
+                                    <p class="card-text">{{Data.contact[0].state}}</p>
+                                    <p class="card-text">{{Data.contact[0].country}}</p>
+                                     
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <p class="card-text">Landline</p>
+                                    <p class="card-text">Mobile</p>
+                                    <p class="card-text">Email ID</p>
+                                                                         
+                                </div>
+                                <div class="col-md-4">
+                                    <!--<p class="card-text">{{Data.contact[0].landline}}</p>
+                                    <p class="card-text">{{Data.contact[0].mobile}}</p>
+                                    <p class="card-text">{{Data.contact[0].email}}</p>-->
+                                    <p class="card-text">****<i class="fa fa-eye ml-4" aria-hidden="true"></i></p>
+                                    <p class="card-text">****<i class="fa fa-eye ml-4" aria-hidden="true"></i></p>
+                                    <p class="card-text">****<i class="fa fa-eye ml-4" aria-hidden="true"></i></p>
+
+                                                                         
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                <br>
+
+                <h4>Partner Preference</h4>
+                <hr>
+                <div class="row">
+                        <div class="col-md-6">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <p class="card-text">Age From</p>
+                                    <p class="card-text">Height</p>
+                                    <p class="card-text">Body Type</p>
+                                    <p class="card-text">Complexion</p>
+                                    <p class="card-text">Marital Status</p>
+                                </div>
+                                <div class="col-md-6">
+                                    <p class="card-text">{{Data.preference[0].age}}</p>
+                                    <p class="card-text">{{Data.preference[0].height}}</p>
+                                    <p class="card-text">{{Data.preference[0].bodytype}}</p>
+                                    <p class="card-text">{{Data.preference[0].complexion}}</p>
+                                    <p class="card-text">{{Data.preference[0].mstatus}}</p>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <p class="card-text">Special Cases</p>
+                                    <p class="card-text">Family Values</p>
+                                    <p class="card-text">Smoking</p>
+                                    <p class="card-text">Driving</p>
+                                    <p class="card-text">Diet</p>
+                                    <p class="card-text">Education</p>
+                                                                         
+                                </div>
+                                <div class="col-md-8">
+                                    <p class="card-text">{{Data.preference[0].scases}}</p>
+                                    <p class="card-text">{{Data.preference[0].fvalues}}</p>
+                                    <p class="card-text">{{Data.preference[0].smoking}}</p>
+                                    <p class="card-text">{{Data.preference[0].drinking}}</p>
+                                    <p class="card-text">{{Data.preference[0].diet}}</p>
+                                    <p class="card-text">{{Data.preference[0].education}}</p>
+                                                                         
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                <br>
+            </div>
+       </div>
+    </div>
+
+    <div class="col-md-9" *ngIf="!show">
+        <div class="card">
+           <div class="bg-primary">
+            <div class="row p-1">
+                <div class="col">
+                    <h3 class="text-white float-left"><span class="align-middle">Contact Details</span></h3>
+                </div>
+                <div class="col">
+                    <button type="button" class="btn btn-outline-light float-right mt-1" (click)="flip()">View Profile</button><br><br>
+                </div>
+            </div>
+           </div>
+             <div class="card-body">
+                 <div class="row">
+                     <div class="col-md-3">
+                         <img src={{Data.image[0].image}}>
+                     </div>
+ 
+                     <div class="col-md-8 offset-md-1">
+                        <h4 class="bg-secondary p-2 text-white">{{profileid}}</h4>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <p class="card-text">Email ID</p>
+                                <p class="card-text">Mobile </p>
+                                <p class="card-text">Landline</p>
+                                <p class="card-text">Address</p>
+                                <p class="card-text">City</p>
+                                <p class="card-text">State</p>
+                                <p class="card-text">Country</p>
+                            </div>
+                            <div class="col-md-8">
+                                <p class="card-text">****<i class="fa fa-eye ml-4" aria-hidden="true"></i></p>
+                                <p class="card-text">****<i class="fa fa-eye ml-4" aria-hidden="true"></i></p>
+                                <p class="card-text">****<i class="fa fa-eye ml-4" aria-hidden="true"></i></p> 
+                                <p class="card-text">****<i class="fa fa-eye ml-4" aria-hidden="true"></i></p> 
+                                <p class="card-text">{{Data.contact[0].city}}</p>
+                                <p class="card-text">{{Data.contact[0].state}}</p>
+                                <p class="card-text">{{Data.contact[0].country}}</p>
+                            </div>
+                        </div>
+                         
+                         
+                     </div>
+ 
+                 </div>
+             </div>
+        </div>
+     </div>
+     <br><br>
+  </div>
+</div>
+
+

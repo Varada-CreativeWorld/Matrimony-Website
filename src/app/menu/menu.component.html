@@ -1,0 +1,150 @@
+<nav class="navbar navbar-expand-sm navbar-light bg-light">
+    <a href="#" class="navbar-brand" color=rgb(255,20,147);>
+        <img src="assets/logo.jpg" height="33"><span style="color:rgb(153,50,204);">RESPONSIVE</span> <span style="color:rgb(255,20,147);">MATRIMONY</span>
+    </a>
+
+    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+   
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav  ml-auto">
+            <li class="nav-item"><a routerLink="/home" class="nav-link active">Home</a></li>
+            <li class="nav-item"><a routerLink="/searchresults" class="nav-link">View Results</a></li>  
+            <li class="nav-item"><a routerLink="/quick" class="nav-link">Search</a></li>  
+            <li class="nav-item"><a routerLink="/membership" class="nav-link">Packages</a></li> 
+            <li class="nav-item"><a href="#" class="nav-link">About Us</a></li> 
+            <li class="nav-item"><a href="#" class="nav-link">Contact</a></li> 
+            <li class="nav-item"><a  routerLink="/myprofile/{{profileid}}" class="nav-link">My Profile</a></li>
+            <button class="btn btn-outline-primary my-2 my-sm-0 mr-1" type="button" data-toggle="modal" data-target="#register" *ngIf="!loggedIn">Register</button>
+            <button class="btn btn-outline-primary my-2 my-sm-0" type="button" data-toggle="modal" data-target="#login" *ngIf="!loggedIn">Login</button>
+            <button class="btn btn-outline-primary my-2 my-sm-0" type="button" data-toggle="modal" *ngIf="loggedIn" (click)="logout()">LogOut</button>
+           
+           <div class="modal fade" id="login" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalCenterTitle">Login</h5>
+                  <button type="button" class="close" data-dismiss="modal" #closeBtn aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                    <form [formGroup]="loginForm" (ngSubmit)="saveL(loginForm.value)">
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" class="form-control" id="email" aria-describedby="emailHelp" formControlName="email" autocomplete="off" required>
+                            
+                        </div>
+                        
+                        <div class="form-group mt-2">
+                          <label for="password">Password</label>
+                          <input type="password" class="form-control" id="password" data-toggle="password" placeholder="Password" formControlName="password" autocomplete="off" required>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary" [disabled]="!loginForm.valid">Submit</button>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                 <!-- <div class="text-center pl-0">
+                    <p>If not registered kindly click the button</p>
+                    <button class="btn btn-outline-primary my-2 my-sm-0" type="button" data-toggle="modal" data-target="#register">Register</button>
+                  </div>-->
+                  
+                </div>
+              </div>
+            </div>
+        </div>
+
+
+            <div class="modal fade" id="register" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalCenterTitle">Register</h5>
+                      <button type="button" class="close" data-dismiss="modal" #closeBtnr aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                        <form [formGroup]="registerForm" (ngSubmit)="saveR(registerForm.value)">
+                            <div class="form-group">
+                              <label for="name">Name</label>
+                              <input type="text" class="form-control" id="name" formControlName="name" autocomplete="off" required>
+
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email address</label>
+                                <input type="email" class="form-control" id="email" aria-describedby="emailHelp" formControlName="email" autocomplete="off" required >
+                                <!--<div class="alert alert-danger" *ngIf="!registerForm.controls['email'].valid && registerForm.controls['email'].touched">
+                                  A valid email is required.
+                                </div>-->
+                            </div>
+                            
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio"  value="Female" formControlName="gender" required>
+                                <label class="form-check-label" for="inlineRadio1">Female</label>
+                              </div>
+                              <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio"   value="Male" formControlName="gender" required>
+                                <label class="form-check-label" for="inlineRadio2">Male</label>
+                              </div>
+                              <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio"   value="Other" formControlName="gender" required>
+                                <label class="form-check-label" for="inlineRadio3">Other</label>
+                            </div>
+                            
+                            <div class="form-group mt-2 ">
+                              <label for="password">Password</label>
+                              <!--<div class="input-group" id="show_hide_password">
+                                <input type="password" class="form-control" id="password" placeholder="Password" formControlName="password" required>
+                                <div class="input-group-addon">
+                                  <a href=""><i class="fa fa-eye-slash" aria-hidden="true"></i></a>
+                                </div>
+                              </div>-->
+                              <div class="input-group">                                
+                                  <input type="password" name="password" id="password" class="form-control" data-toggle="password" formControlName="password" required>                                
+                                                                 
+                              </div>
+                                                              
+                            </div>
+
+                            <div class="alert alert-danger" *ngIf="(!registerForm.controls['password'].valid)">
+                              Password should be atleast 8 characters long.
+                            </div>
+
+                            <div class="form-group mt-2">
+                              <label for="password">Confirm Password</label>
+                              <input type="password" class="form-control" id="password" data-toggle="password" formControlName="cpassword" required>
+                            </div>
+
+                            <div class="alert alert-danger" *ngIf="MustMatch(registerForm.value)">
+                              Password and Confirm Password should match.
+                            </div>
+
+                            <div class="form-group">
+                                <label for="dob">Birthday: </label>
+                                <input type="date" id="dob" name="dob" formControlName="dob" required>
+                            </div> 
+                            
+                            <div class="form-group mt-2">
+                              <label for="language">Mother Tongue</label>
+                              <input type="text" class="form-control" id="language" formControlName="language" required>
+                            </div>                         
+  
+                            
+                            <button type="submit" class="btn btn-primary" [disabled]="!registerForm.valid">Submit</button>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                      
+                    </div>
+                  </div>
+                </div>
+            </div>
+
+        </ul>
+
+    </div>
+    </nav>
+    
