@@ -1,3 +1,18 @@
+# Project Description
+
+This is a FullStack Project developed using Angular 9 and PHP.
+
+It offers following features:
+•	Profile creation, updation and deletion.
+•	Users can find matches based on preferences.
+•	Users can send follow requests, accept and reject requests.
+•	Users can change passwords.
+•	Users can send mail to their followers.
+•	Users can chat online with their followers.
+•	Users can upgrade their membership to Gold, Silver or Premium.
+
+The Frontend interacts with the Backend Database using PHP APIS.
+
 # Matrimonial
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.21.
